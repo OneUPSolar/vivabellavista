@@ -1,0 +1,13 @@
+# Cloudflare Pages — vivabellavista.com routing
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Trailing-slash normalisation for /c103
+/c103   /c103/   301
+
+# Serve c103 subfolder cleanly (splat pass-through)
+/c103/*  /c103/:splat  200
+
+# www → apex redirect (add www.vivabellavista.com as custom domain in CF Pages,
+# then Cloudflare will handle the 301 automatically via bulk redirect — this is
+# a fallback in case you need it at the Pages level)
+# https://www.vivabellavista.com/*  https://vivabellavista.com/:splat  301
