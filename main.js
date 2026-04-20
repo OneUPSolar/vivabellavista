@@ -266,7 +266,7 @@
       // from formspree.io/forms after creating a free account.
       // e.g. https://formspree.io/f/xyzabcde
       // -------------------------------------------------------
-      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xqewldvr;
 
       try {
         const res = await fetch(FORMSPREE_ENDPOINT, {
