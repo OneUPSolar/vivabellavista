@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Encuesta de la Comunidad â Viva Bella Vista</title>
+<meta name="description" content="Encuesta a propietarios, residentes e inquilinos de Condominios Bella Vista. Tu voz cuenta para mejorar nuestra comunidad." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --ink: #0f1f2a;
+    --ink-soft: #2a3a47;
+    --paper: #f5f1e8;
+    --paper-warm: #ebe4d4;
+    --line: #1a2b38;
+    --accent: #b54424;        /* terracota costera */
+    --accent-deep: #8a3219;
+    --sea: #1e4a5f;           /* azul profundo del mar */
+    --muted: #6b7a85;
+    --field-bg: #ffffff;
+    --field-border: #d4cdb8;
+    --shadow: 0 1px 0 rgba(15,31,42,.06), 0 8px 24px -16px rgba(15,31,42,.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(15,31,42,.04) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  ::selection { background: var(--accent); color: var(--paper); }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ============ HEADER / HERO ============ */
+  .topbar {
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    padding: 18px 0;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .topbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+  }
+  .topbar .brand span { color: var(--accent); font-style: italic; }
+  .topbar .meta { color: var(--muted); font-size: 11px; }
+
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 40px; right: -60px;
+    width: 280px; height: 280px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 200px; height: 200px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+
+  .lead {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 0 36px;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--field-border);
+  }
+  .hero-meta div .label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .hero-meta div .value {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  @media (max-width: 600px) {
+    .hero-meta { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  /* ============ INTRO / CONTEXTO ============ */
+  .intro {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 700px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+  .intro-label {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 6px;
+  }
+  .intro-text p {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+    font-weight: 300;
+  }
+  .intro-text p:first-child::first-letter {
+    font-family: 'Fraunces', serif;
+    float: left;
+    font-size: 64px;
+    line-height: 0.9;
+    padding: 6px 10px 0 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .intro-text strong {
+    font-weight: 500;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  /* ============ FORMULARIO ============ */
+  .form-section {
+    padding: 72px 0 48px;
+  }
+
+  .section-block {
+    margin-bottom: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px dashed var(--field-border);
+  }
+  .section-block:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin: -22px 0 28px 0;
+    max-width: 640px;
+    font-style: italic;
+  }
+
+  .field {
+    margin-bottom: 28px;
+  }
+  .field label.q {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .field .help {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: -6px;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .req {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 2px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--field-border);
+    background: var(--field-bg);
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    border-radius: 2px;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(15,31,42,.08);
+  }
+  textarea { resize: vertical; min-height: 96px; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* radio / checkbox custom */
+  .options { display: grid; gap: 10px; }
+  .options.cols-2 { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 600px) { .options.cols-2 { grid-template-columns: 1fr; } }
+
+  .opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--field-border);
+    background: var(--field-bg);
+    cursor: pointer;
+    transition: all .12s ease;
+    border-radius: 2px;
+    font-size: 14.5px;
+    line-height: 1.4;
+  }
+  .opt:hover { border-color: var(--ink-soft); background: #fff; }
+  .opt input { margin-top: 3px; accent-color: var(--accent); flex-shrink: 0; }
+  .opt input:checked + span { font-weight: 500; }
+  .opt:has(input:checked) {
+    border-color: var(--accent);
+    background: #fff;
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+
+  /* escala 1-5 */
+  .scale {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .scale label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 6px;
+    border: 1px solid var(--field-border);
+    background: var(--field-bg);
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 13px;
+    text-align: center;
+    transition: all .12s;
+  }
+  .scale label:hover { border-color: var(--ink-soft); }
+  .scale label:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--paper);
+    font-weight: 500;
+  }
+  .scale label input { display: none; }
+  .scale-num {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .scale-caption {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  /* escala 1-10 */
+  .scale10 {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .scale10 label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0;
+    border: 1px solid var(--field-border);
+    background: var(--field-bg);
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all .12s;
+  }
+  .scale10 label:hover { border-color: var(--ink-soft); }
+  .scale10 label:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .scale10 label input { display: none; }
+  @media (max-width: 600px) {
+    .scale10 { grid-template-columns: repeat(5, 1fr); }
+  }
+
+  /* "Â¿Estabas enterado?" bloques compactos */
+  .knowledge-block {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--sea);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    border-radius: 2px;
+  }
+  .knowledge-block .fact {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+  .knowledge-block .fact strong {
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+  .knowledge-block .yn {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .knowledge-block .yn label {
+    flex: 1;
+    min-width: 90px;
+    padding: 8px 12px;
+    border: 1px solid var(--field-border);
+    background: var(--field-bg);
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: center;
+    transition: all .12s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .knowledge-block .yn label:hover { border-color: var(--ink-soft); }
+  .knowledge-block .yn label:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--paper);
+    font-weight: 500;
+  }
+  .knowledge-block .yn input { accent-color: var(--accent); margin: 0; }
+  .knowledge-block .yn label:has(input:checked) input { display: none; }
+
+  .matrix-row {
+    margin-bottom: 22px;
+  }
+  .matrix-row .matrix-label {
+    font-size: 14.5px;
+    margin-bottom: 6px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .matrix-row .matrix-help {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  /* ============ SUBMIT ============ */
+  .submit-block {
+    padding: 56px 0 96px;
+    text-align: center;
+  }
+  .submit-block .privacy {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 540px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+  }
+
+  button[type="submit"] {
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 18px 48px;
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  button[type="submit"]:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px -8px rgba(181,68,36,.5);
+  }
+  button[type="submit"]:active { transform: translateY(0); }
+
+  /* ============ FOOTER ============ */
+  footer {
+    border-top: 1px solid var(--line);
+    background: var(--ink);
+    color: var(--paper-warm);
+    padding: 48px 0 32px;
+    font-size: 13px;
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  footer .brand-foot {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--paper);
+    margin-bottom: 6px;
+  }
+  footer .brand-foot em { color: var(--accent); font-style: italic; }
+  footer p { margin: 0; opacity: .7; max-width: 380px; line-height: 1.6; }
+  footer .legal {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(245,241,232,.1);
+    width: 100%;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: .5;
+  }
+
+  /* ============ STATUS ============ */
+  .status {
+    display: none;
+    padding: 20px;
+    margin-top: 24px;
+    border-radius: 2px;
+    font-size: 14px;
+  }
+  .status.success {
+    display: block;
+    background: #e8f0e8;
+    border-left: 3px solid #3d6b3d;
+    color: #1f3a1f;
+  }
+  .status.error {
+    display: block;
+    background: #f5e8e4;
+    border-left: 3px solid var(--accent);
+    color: var(--accent-deep);
+  }
+
+  /* anim load */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > .container > * {
+    animation: fadeUp .7s ease-out backwards;
+  }
+  .hero .eyebrow { animation-delay: .05s; }
+  .hero h1 { animation-delay: .15s; }
+  .hero .lead { animation-delay: .3s; }
+  .hero .hero-meta { animation-delay: .45s; }
+
+  /* anchor offset */
+  .form-section { scroll-margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="brand">Viva <span>Bella Vista</span></div>
+    <div class="meta">Convocatoria de Residentes Â· 2026</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Encuesta a la comunidad</div>
+    <h1>Tu voz <em>construye</em><br/>nuestra comunidad.</h1>
+    <p class="lead">
+      Somos un grupo de propietarios y residentes de Bella Vista buscando
+      escuchar a quienes habitan, rentan o son dueÃ±os aquÃ­. Esta encuesta
+      es el primer paso hacia una conversaciÃ³n honesta sobre lo que
+      funciona, lo que no, y lo que tenemos que cambiar â juntos.
+    </p>
+
+    <div class="hero-meta">
+      <div>
+        <div class="label">Tiempo estimado</div>
+        <div class="value">10 a 15 minutos</div>
+      </div>
+      <div>
+        <div class="label">IdentificaciÃ³n</div>
+        <div class="value">Opcional, recomendada</div>
+      </div>
+      <div>
+        <div class="label">Siguiente paso</div>
+        <div class="value">Videollamada por Zoom</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-label">Â¿Por quÃ©<br/>esta encuesta?</div>
+      <div class="intro-text">
+        <p>
+          Las asambleas son cada vez mÃ¡s pequeÃ±as. <strong>No hay transparencia,
+          no hay estados de cuenta, las cuentas estÃ¡n bloqueadas</strong>, y
+          muchos trabajos que deberÃ­an hacerse simplemente no se hacen. Hay
+          goteras, daÃ±os estructurales, las albercas no se usan por falta de
+          mantenimiento, los extintores desaparecen, y la luz se va a cada rato.
+        </p>
+        <p>
+          Esta convocatoria es <strong>independiente del comitÃ© de vigilancia
+          actual</strong> y busca sumar a todos los que viven, rentan o son
+          dueÃ±os aquÃ­. Tus respuestas pueden ser anÃ³nimas si asÃ­ lo prefieres,
+          aunque te sugerimos dejar al menos un correo o WhatsApp para
+          invitarte a la videollamada por Zoom donde compartiremos resultados y
+          siguientes pasos. <em>Queremos que todos tengan voz y voto.</em>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="encuesta">
+  <div class="container">
+    <form id="surveyForm" novalidate>
+
+      <!-- 1. CONTACTO -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">01 â</span>
+          <h2 class="section-title">Tus datos de contacto</h2>
+        </div>
+        <p class="section-desc">
+          <strong>Tus datos son opcionales y se manejan con discreciÃ³n.</strong>
+          Si prefieres responder de forma totalmente anÃ³nima, estÃ¡ bien â puedes
+          dejar todo en blanco. Pero te sugerimos al menos dejar un correo o
+          WhatsApp para invitarte a la videollamada y darle continuidad a la
+          conversaciÃ³n. <em>El anonimato total no se recomienda</em> porque dificulta
+          validar la respuesta y darte seguimiento.
+        </p>
+
+        <div class="grid-2">
+          <div class="field">
+            <label class="q" for="nombre">Nombre completo</label>
+            <span class="help">Opcional, pero recomendado.</span>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label class="q" for="email">Correo electrÃ³nico</label>
+            <span class="help">Opcional, pero recomendado.</span>
+            <input type="email" id="email" name="email" autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label class="q" for="whatsapp">WhatsApp</label>
+            <span class="help">Para invitarte a la videollamada.</span>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej. +52 664 123 4567" />
+          </div>
+          <div class="field">
+            <label class="q" for="unidad">Edificio y nÃºmero de unidad</label>
+            <span class="help">Opcional. Ayuda a contextualizar tus respuestas.</span>
+            <input type="text" id="unidad" name="unidad" placeholder="Ej. C-103 / Edificio B" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿CuÃ¡l es tu relaciÃ³n con Bella Vista?<span class="req">*</span></label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="relacion" value="propietario_residente" required /><span>Propietario que vive aquÃ­</span></label>
+            <label class="opt"><input type="radio" name="relacion" value="propietario_no_residente" /><span>Propietario que NO vive aquÃ­</span></label>
+            <label class="opt"><input type="radio" name="relacion" value="inquilino" /><span>Inquilino / rento</span></label>
+            <label class="opt"><input type="radio" name="relacion" value="familiar" /><span>Familiar de propietario</span></label>
+            <label class="opt"><input type="radio" name="relacion" value="prefiero_no_decir" /><span>Prefiero no decir</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="antiguedad">Â¿Hace cuÃ¡nto vives o tienes propiedad en Bella Vista?</label>
+          <select id="antiguedad" name="antiguedad">
+            <option value="">â Selecciona una opciÃ³n â</option>
+            <option>Menos de 1 aÃ±o</option>
+            <option>1 a 3 aÃ±os</option>
+            <option>3 a 5 aÃ±os</option>
+            <option>MÃ¡s de 5 aÃ±os</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 2. ASAMBLEAS -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">02 â</span>
+          <h2 class="section-title">Asambleas y participaciÃ³n</h2>
+        </div>
+        <p class="section-desc">
+          Somos cerca de 95 propietarios, pero las decisiones suelen tomarse
+          entre 6 votos. Queremos entender por quÃ© la gente no asiste, quÃ©
+          experiencia ha tenido quien sÃ­ va, y cÃ³mo abrir la participaciÃ³n a
+          todos los que tienen derecho.
+        </p>
+
+        <div class="field">
+          <label class="q">Â¿Has asistido a alguna asamblea de la AC en los Ãºltimos 12 meses?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="asistencia" value="si" /><span>SÃ­, he asistido</span></label>
+            <label class="opt"><input type="radio" name="asistencia" value="no_invitado" /><span>No, no me invitaron</span></label>
+            <label class="opt"><input type="radio" name="asistencia" value="no_pude" /><span>No, no pude asistir</span></label>
+            <label class="opt"><input type="radio" name="asistencia" value="no_sabia" /><span>No sabÃ­a que existÃ­an</span></label>
+            <label class="opt"><input type="radio" name="asistencia" value="no_reconocido" /><span>No me reconocieron como propietario</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Si has asistido, Â¿cÃ³mo describirÃ­as las asambleas?</label>
+          <span class="help">Marca todas las que apliquen. Solo si has asistido al menos una vez.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="equitativas" /><span>Son equitativas, todos hablan</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="funcionan" /><span>Funcionan bien, hay decisiones claras</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="no_funcionan" /><span>No funcionan, no se decide nada</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="disruptivas" /><span>Son disruptivas o caÃ³ticas</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="desorden" /><span>Hay mucho desorden</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="gritos" /><span>Hay gritos y maltratos</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="tediosas" /><span>Son tediosas, muy largas</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="manipuladas" /><span>SentÃ­ que estaban manipuladas</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="pocos_deciden" /><span>Pocos toman las decisiones por todos</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="orden_dia" /><span>No se respeta el orden del dÃ­a</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="sin_actas" /><span>No se entregan actas despuÃ©s</span></label>
+            <label class="opt"><input type="checkbox" name="asamblea_opinion" value="no_aplica" /><span>No he asistido a ninguna</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Sabiendo que somos cerca de 95 propietarios y que tÃ­picamente las decisiones se toman entre menos de 10 votos, Â¿quÃ© tan representativas te parecen las asambleas actuales?</label>
+          <div class="scale">
+            <label><input type="radio" name="representatividad" value="1" /><span class="scale-num">1</span><span>Nada representativas</span></label>
+            <label><input type="radio" name="representatividad" value="2" /><span class="scale-num">2</span></label>
+            <label><input type="radio" name="representatividad" value="3" /><span class="scale-num">3</span><span>Regular</span></label>
+            <label><input type="radio" name="representatividad" value="4" /><span class="scale-num">4</span></label>
+            <label><input type="radio" name="representatividad" value="5" /><span class="scale-num">5</span><span>Muy representativas</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Si las asambleas fueran por Zoom o hÃ­bridas, Â¿asistirÃ­as?</label>
+          <span class="help">Esta es una de las decisiones clave que queremos validar con la comunidad.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="asistencia_zoom" value="si_definitivo" /><span>SÃ­, definitivamente</span></label>
+            <label class="opt"><input type="radio" name="asistencia_zoom" value="probable" /><span>Probablemente sÃ­</span></label>
+            <label class="opt"><input type="radio" name="asistencia_zoom" value="depende_horario" /><span>Depende del horario</span></label>
+            <label class="opt"><input type="radio" name="asistencia_zoom" value="no" /><span>No, prefiero presencial</span></label>
+            <label class="opt"><input type="radio" name="asistencia_zoom" value="no_asisto" /><span>No asistirÃ­a en ningÃºn formato</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© formato de asamblea prefieres?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="formato" value="presencial" /><span>Presencial</span></label>
+            <label class="opt"><input type="radio" name="formato" value="zoom" /><span>Por Zoom / videollamada</span></label>
+            <label class="opt"><input type="radio" name="formato" value="hibrido" /><span>HÃ­brido (presencial + Zoom)</span></label>
+            <label class="opt"><input type="radio" name="formato" value="indistinto" /><span>Me da igual</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿CÃ³mo te enteras de las convocatorias a asamblea?</label>
+          <span class="help">Puedes marcar varias opciones.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="convocatoria_canal" value="email" /><span>Correo electrÃ³nico</span></label>
+            <label class="opt"><input type="checkbox" name="convocatoria_canal" value="whatsapp" /><span>WhatsApp</span></label>
+            <label class="opt"><input type="checkbox" name="convocatoria_canal" value="papel" /><span>Aviso en papel / volante</span></label>
+            <label class="opt"><input type="checkbox" name="convocatoria_canal" value="vecinos" /><span>Por vecinos</span></label>
+            <label class="opt"><input type="checkbox" name="convocatoria_canal" value="ninguno" /><span>No me entero</span></label>
+          </div>
+        </div>
+
+        <!-- DERECHO DE RECONOCIMIENTO -->
+        <div class="field">
+          <div class="knowledge-block" style="border-left-color: var(--accent); background: #f5e8e4;">
+            <p class="fact" style="font-size:15px;">
+              <strong>Importante:</strong> actualmente solo se reconoce como
+              propietarios a quienes tienen escritura. Esto excluye a personas
+              con <strong>contrato de compraventa notariado</strong>, herederos
+              en sucesiÃ³n, y a representantes legales de propietarios mayores o
+              ausentes â quienes <strong>sÃ­ tienen derecho legal</strong> a
+              participar.
+            </p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Has tenido problemas para que te reconozcan tu derecho a participar en asambleas?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="reconocimiento" value="si_compraventa" /><span>SÃ­, tengo contrato de compraventa pero no escritura</span></label>
+            <label class="opt"><input type="radio" name="reconocimiento" value="si_representante" /><span>SÃ­, soy representante legal del propietario</span></label>
+            <label class="opt"><input type="radio" name="reconocimiento" value="si_heredero" /><span>SÃ­, soy heredero en sucesiÃ³n</span></label>
+            <label class="opt"><input type="radio" name="reconocimiento" value="si_carta" /><span>SÃ­, llevÃ© carta poder y no la aceptaron</span></label>
+            <label class="opt"><input type="radio" name="reconocimiento" value="no" /><span>No, me han reconocido sin problema</span></label>
+            <label class="opt"><input type="radio" name="reconocimiento" value="no_intentado" /><span>No he intentado asistir</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿EstÃ¡s de acuerdo con que la AC <strong>tambiÃ©n reconozca</strong> a compradores con contrato notariado, representantes legales y herederos?</label>
+          <span class="help">El reglamento permite la representaciÃ³n por carta poder ante dos testigos. Excluir a estos casos es contrario al derecho condominial.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="reconocer_amplio" value="totalmente" /><span>Totalmente de acuerdo</span></label>
+            <label class="opt"><input type="radio" name="reconocer_amplio" value="acuerdo" /><span>De acuerdo</span></label>
+            <label class="opt"><input type="radio" name="reconocer_amplio" value="condicionado" /><span>De acuerdo con requisitos claros</span></label>
+            <label class="opt"><input type="radio" name="reconocer_amplio" value="desacuerdo" /><span>En desacuerdo, solo escriturados</span></label>
+            <label class="opt"><input type="radio" name="reconocer_amplio" value="no_se" /><span>No tengo opiniÃ³n</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="asamblea_comentario">Â¿Has presenciado o experimentado algo en asambleas que quieras compartir?</label>
+          <span class="help">ManipulaciÃ³n, exclusiÃ³n, gritos, decisiones tomadas sin votar, etc. Tu testimonio se trata con discreciÃ³n.</span>
+          <textarea id="asamblea_comentario" name="asamblea_comentario" rows="4"></textarea>
+        </div>
+      </div>
+
+      <!-- 3. TRANSPARENCIA -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">03 â</span>
+          <h2 class="section-title">Transparencia financiera y cuotas</h2>
+        </div>
+        <p class="section-desc">
+          El reglamento establece que la mesa directiva debe informar bimestralmente
+          sobre la integraciÃ³n y aplicaciÃ³n de los fondos. Queremos saber si esto se
+          estÃ¡ cumpliendo.
+        </p>
+
+        <div class="field">
+          <label class="q">Â¿Recibes los informes bimestrales sobre el uso de las cuotas?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="informes" value="si_regular" /><span>SÃ­, con regularidad</span></label>
+            <label class="opt"><input type="radio" name="informes" value="a_veces" /><span>A veces, no consistente</span></label>
+            <label class="opt"><input type="radio" name="informes" value="nunca" /><span>Nunca los he recibido</span></label>
+            <label class="opt"><input type="radio" name="informes" value="no_sabia" /><span>No sabÃ­a que existieran</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">QuÃ© tan claro tienes en quÃ© se gastan tus cuotas de mantenimiento</label>
+          <div class="scale">
+            <label><input type="radio" name="claridad_cuotas" value="1" /><span class="scale-num">1</span><span>Nada claro</span></label>
+            <label><input type="radio" name="claridad_cuotas" value="2" /><span class="scale-num">2</span><span>Poco</span></label>
+            <label><input type="radio" name="claridad_cuotas" value="3" /><span class="scale-num">3</span><span>Regular</span></label>
+            <label><input type="radio" name="claridad_cuotas" value="4" /><span class="scale-num">4</span><span>Bastante</span></label>
+            <label><input type="radio" name="claridad_cuotas" value="5" /><span class="scale-num">5</span><span>Muy claro</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Consideras que las cuotas actuales corresponden a la calidad del servicio recibido?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="cuotas_valor" value="si" /><span>SÃ­, son razonables</span></label>
+            <label class="opt"><input type="radio" name="cuotas_valor" value="altas" /><span>Son altas para lo que recibimos</span></label>
+            <label class="opt"><input type="radio" name="cuotas_valor" value="bajas" /><span>Son bajas / falta inversiÃ³n</span></label>
+            <label class="opt"><input type="radio" name="cuotas_valor" value="no_se" /><span>No sabrÃ­a decir</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="financiero_comentario">Â¿Hay algÃºn gasto o cobro que te genere dudas?</label>
+          <span class="help">Opcional. SÃ© tan especÃ­fico como puedas.</span>
+          <textarea id="financiero_comentario" name="financiero_comentario" placeholder="Ej. cuotas extraordinarias sin justificar, cobros no reportados, etc."></textarea>
+        </div>
+      </div>
+
+      <!-- 4. VIGILANCIA -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">04 â</span>
+          <h2 class="section-title">Vigilancia y seguridad</h2>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿CÃ³mo calificas el servicio de vigilancia en Bella Vista?</label>
+          <div class="scale">
+            <label><input type="radio" name="vigilancia_calidad" value="1" /><span class="scale-num">1</span><span>Muy malo</span></label>
+            <label><input type="radio" name="vigilancia_calidad" value="2" /><span class="scale-num">2</span><span>Malo</span></label>
+            <label><input type="radio" name="vigilancia_calidad" value="3" /><span class="scale-num">3</span><span>Regular</span></label>
+            <label><input type="radio" name="vigilancia_calidad" value="4" /><span class="scale-num">4</span><span>Bueno</span></label>
+            <label><input type="radio" name="vigilancia_calidad" value="5" /><span class="scale-num">5</span><span>Muy bueno</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Has tenido alguno de los siguientes problemas?</label>
+          <span class="help">Marca todos los que apliquen.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="seguridad_problemas" value="acceso_no_autorizado" /><span>Acceso no autorizado a residencia / unidad</span></label>
+            <label class="opt"><input type="checkbox" name="seguridad_problemas" value="visitas_filtro" /><span>Filtros de visitas inconsistentes</span></label>
+            <label class="opt"><input type="checkbox" name="seguridad_problemas" value="rondines" /><span>Rondines insuficientes</span></label>
+            <label class="opt"><input type="checkbox" name="seguridad_problemas" value="actitud" /><span>Actitud inadecuada del personal</span></label>
+            <label class="opt"><input type="checkbox" name="seguridad_problemas" value="robos" /><span>Robos o incidentes en Ã¡reas comunes</span></label>
+            <label class="opt"><input type="checkbox" name="seguridad_problemas" value="ninguno" /><span>NingÃºn problema</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="vigilancia_comentario">Comentarios adicionales sobre vigilancia / seguridad</label>
+          <textarea id="vigilancia_comentario" name="vigilancia_comentario"></textarea>
+        </div>
+      </div>
+
+      <!-- 5. MANTENIMIENTO -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">05 â</span>
+          <h2 class="section-title">Mantenimiento de Ã¡reas comunes</h2>
+        </div>
+
+        <div class="field">
+          <label class="q">Califica el estado actual de:</label>
+          <span class="help">1 = pÃ©simo, 5 = excelente.</span>
+          <div style="display:grid; gap:18px; margin-top:8px;">
+            <div>
+              <div style="font-size:14px; margin-bottom:6px; color:var(--ink-soft);">JardinerÃ­a y Ã¡reas verdes</div>
+              <div class="scale">
+                <label><input type="radio" name="mant_jardineria" value="1" /><span class="scale-num">1</span></label>
+                <label><input type="radio" name="mant_jardineria" value="2" /><span class="scale-num">2</span></label>
+                <label><input type="radio" name="mant_jardineria" value="3" /><span class="scale-num">3</span></label>
+                <label><input type="radio" name="mant_jardineria" value="4" /><span class="scale-num">4</span></label>
+                <label><input type="radio" name="mant_jardineria" value="5" /><span class="scale-num">5</span></label>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:14px; margin-bottom:6px; color:var(--ink-soft);">Limpieza de Ã¡reas comunes</div>
+              <div class="scale">
+                <label><input type="radio" name="mant_limpieza" value="1" /><span class="scale-num">1</span></label>
+                <label><input type="radio" name="mant_limpieza" value="2" /><span class="scale-num">2</span></label>
+                <label><input type="radio" name="mant_limpieza" value="3" /><span class="scale-num">3</span></label>
+                <label><input type="radio" name="mant_limpieza" value="4" /><span class="scale-num">4</span></label>
+                <label><input type="radio" name="mant_limpieza" value="5" /><span class="scale-num">5</span></label>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:14px; margin-bottom:6px; color:var(--ink-soft);">Alberca / club residencial</div>
+              <div class="scale">
+                <label><input type="radio" name="mant_alberca" value="1" /><span class="scale-num">1</span></label>
+                <label><input type="radio" name="mant_alberca" value="2" /><span class="scale-num">2</span></label>
+                <label><input type="radio" name="mant_alberca" value="3" /><span class="scale-num">3</span></label>
+                <label><input type="radio" name="mant_alberca" value="4" /><span class="scale-num">4</span></label>
+                <label><input type="radio" name="mant_alberca" value="5" /><span class="scale-num">5</span></label>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:14px; margin-bottom:6px; color:var(--ink-soft);">IluminaciÃ³n y banquetas</div>
+              <div class="scale">
+                <label><input type="radio" name="mant_ilum" value="1" /><span class="scale-num">1</span></label>
+                <label><input type="radio" name="mant_ilum" value="2" /><span class="scale-num">2</span></label>
+                <label><input type="radio" name="mant_ilum" value="3" /><span class="scale-num">3</span></label>
+                <label><input type="radio" name="mant_ilum" value="4" /><span class="scale-num">4</span></label>
+                <label><input type="radio" name="mant_ilum" value="5" /><span class="scale-num">5</span></label>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:14px; margin-bottom:6px; color:var(--ink-soft);">RecolecciÃ³n de basura</div>
+              <div class="scale">
+                <label><input type="radio" name="mant_basura" value="1" /><span class="scale-num">1</span></label>
+                <label><input type="radio" name="mant_basura" value="2" /><span class="scale-num">2</span></label>
+                <label><input type="radio" name="mant_basura" value="3" /><span class="scale-num">3</span></label>
+                <label><input type="radio" name="mant_basura" value="4" /><span class="scale-num">4</span></label>
+                <label><input type="radio" name="mant_basura" value="5" /><span class="scale-num">5</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="mant_urgente">Â¿QuÃ© Ã¡rea necesita atenciÃ³n urgente?</label>
+          <textarea id="mant_urgente" name="mant_urgente" placeholder="Ej. fugas, fachadas, jardÃ­n de la entrada, etc."></textarea>
+        </div>
+      </div>
+
+      <!-- 6. COMITÃ DE VIGILANCIA / MESA DIRECTIVA -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">06 â</span>
+          <h2 class="section-title">ComitÃ© de vigilancia y mesa directiva</h2>
+        </div>
+        <p class="section-desc">
+          El comitÃ© de vigilancia debe supervisar al administrador y a la mesa
+          directiva, e informar a los propietarios. Queremos saber si estÃ¡
+          cumpliendo su funciÃ³n.
+        </p>
+
+        <div class="field">
+          <label class="q">Â¿Sabes quiÃ©nes integran actualmente la mesa directiva?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="conoce_mesa" value="si_todos" /><span>SÃ­, conozco a todos</span></label>
+            <label class="opt"><input type="radio" name="conoce_mesa" value="algunos" /><span>Conozco a algunos</span></label>
+            <label class="opt"><input type="radio" name="conoce_mesa" value="no" /><span>No los conozco</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿CÃ³mo evalÃºas la gestiÃ³n actual de la mesa directiva?</label>
+          <div class="scale">
+            <label><input type="radio" name="eval_mesa" value="1" /><span class="scale-num">1</span><span>Mala</span></label>
+            <label><input type="radio" name="eval_mesa" value="2" /><span class="scale-num">2</span></label>
+            <label><input type="radio" name="eval_mesa" value="3" /><span class="scale-num">3</span><span>Regular</span></label>
+            <label><input type="radio" name="eval_mesa" value="4" /><span class="scale-num">4</span></label>
+            <label><input type="radio" name="eval_mesa" value="5" /><span class="scale-num">5</span><span>Buena</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Consideras que el comitÃ© de vigilancia estÃ¡ cumpliendo su funciÃ³n?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="comite_func" value="si" /><span>SÃ­, cumple bien</span></label>
+            <label class="opt"><input type="radio" name="comite_func" value="parcial" /><span>Parcialmente</span></label>
+            <label class="opt"><input type="radio" name="comite_func" value="no" /><span>No, no cumple</span></label>
+            <label class="opt"><input type="radio" name="comite_func" value="no_sabe" /><span>No sÃ© quÃ© hace el comitÃ©</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿EstarÃ­as dispuesto a participar en una mesa directiva, comitÃ© de vigilancia o comisiÃ³n?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="participar_comite" value="si" /><span>SÃ­, me interesa</span></label>
+            <label class="opt"><input type="radio" name="participar_comite" value="depende" /><span>Depende del rol</span></label>
+            <label class="opt"><input type="radio" name="participar_comite" value="no" /><span>No, gracias</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. MASCOTAS -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">07 â</span>
+          <h2 class="section-title">Mascotas y Ã¡reas comunes</h2>
+        </div>
+        <p class="section-desc">
+          El reglamento actual permite mascotas dentro de la unidad y bajo correa
+          en Ã¡reas comunes, pero hay situaciones que merecen revisiÃ³n: perros usados
+          como vigilancia, animales rescatados sin claridad de tenencia, y el paseo
+          en el terreno baldÃ­o de enfrente que no pertenece a Bella Vista.
+        </p>
+
+        <div class="field">
+          <label class="q">Â¿Tienes mascota en tu unidad?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="mascota_propia" value="perro" /><span>SÃ­, perro</span></label>
+            <label class="opt"><input type="radio" name="mascota_propia" value="gato" /><span>SÃ­, gato</span></label>
+            <label class="opt"><input type="radio" name="mascota_propia" value="otra" /><span>SÃ­, otra</span></label>
+            <label class="opt"><input type="radio" name="mascota_propia" value="no" /><span>No tengo mascota</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© tan conforme estÃ¡s con que existan perros en Ã¡reas comunes usados como "perros de vigilancia"?</label>
+          <div class="scale">
+            <label><input type="radio" name="perros_vigilancia" value="1" /><span class="scale-num">1</span><span>Nada conforme</span></label>
+            <label><input type="radio" name="perros_vigilancia" value="2" /><span class="scale-num">2</span></label>
+            <label><input type="radio" name="perros_vigilancia" value="3" /><span class="scale-num">3</span><span>Neutral</span></label>
+            <label><input type="radio" name="perros_vigilancia" value="4" /><span class="scale-num">4</span></label>
+            <label><input type="radio" name="perros_vigilancia" value="5" /><span class="scale-num">5</span><span>Muy conforme</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© tan conforme estÃ¡s con tener perros rescatados viviendo en Ã¡reas comunes?</label>
+          <span class="help">Animales sin un dueÃ±o formal, alimentados por residentes o personal.</span>
+          <div class="scale">
+            <label><input type="radio" name="perros_rescatados" value="1" /><span class="scale-num">1</span><span>Nada conforme</span></label>
+            <label><input type="radio" name="perros_rescatados" value="2" /><span class="scale-num">2</span></label>
+            <label><input type="radio" name="perros_rescatados" value="3" /><span class="scale-num">3</span><span>Neutral</span></label>
+            <label><input type="radio" name="perros_rescatados" value="4" /><span class="scale-num">4</span></label>
+            <label><input type="radio" name="perros_rescatados" value="5" /><span class="scale-num">5</span><span>Muy conforme</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">El terreno baldÃ­o de enfrente <strong>no pertenece a Bella Vista</strong>. Â¿EstÃ¡s de acuerdo con que los dueÃ±os de mascotas tengan la libertad de pasearlas ahÃ­ sin correa?</label>
+          <span class="help">Es propiedad ajena al condominio: la administraciÃ³n no tiene autoridad para sancionar el comportamiento de mascotas fuera del fraccionamiento. Cada propietario decide si lleva a su mascota o no.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="paseo_baldio" value="muy_acuerdo" /><span>Totalmente de acuerdo, es Ã¡rea externa</span></label>
+            <label class="opt"><input type="radio" name="paseo_baldio" value="acuerdo" /><span>De acuerdo, es decisiÃ³n personal</span></label>
+            <label class="opt"><input type="radio" name="paseo_baldio" value="condicionado" /><span>De acuerdo, pero recogiendo desechos</span></label>
+            <label class="opt"><input type="radio" name="paseo_baldio" value="desacuerdo" /><span>No estoy de acuerdo</span></label>
+            <label class="opt"><input type="radio" name="paseo_baldio" value="no_se" /><span>No tengo opiniÃ³n</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Consideras que la administraciÃ³n tiene autoridad para sancionar conductas que ocurren <em>fuera</em> de Bella Vista (en propiedad ajena)?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="autoridad_externa" value="no" /><span>No, su jurisdicciÃ³n termina en el lÃ­mite del fraccionamiento</span></label>
+            <label class="opt"><input type="radio" name="autoridad_externa" value="parcial" /><span>Solo si afecta directamente al condominio</span></label>
+            <label class="opt"><input type="radio" name="autoridad_externa" value="si" /><span>SÃ­, deben cuidar la imagen del lugar</span></label>
+            <label class="opt"><input type="radio" name="autoridad_externa" value="no_se" /><span>No estoy seguro</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Si tienes mascota, Â¿quÃ© te parece el nuevo reglamento de sanciones aplicable a mascotas?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="reg_mascotas" value="justo" /><span>Justo y necesario</span></label>
+            <label class="opt"><input type="radio" name="reg_mascotas" value="excesivo" /><span>Excesivo o desproporcionado</span></label>
+            <label class="opt"><input type="radio" name="reg_mascotas" value="insuficiente" /><span>Insuficiente, falta mÃ¡s</span></label>
+            <label class="opt"><input type="radio" name="reg_mascotas" value="no_conozco" /><span>No conozco el nuevo reglamento</span></label>
+            <label class="opt"><input type="radio" name="reg_mascotas" value="na" /><span>No aplica, no tengo mascota</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="mascotas_comentario">Comentarios adicionales sobre mascotas</label>
+          <textarea id="mascotas_comentario" name="mascotas_comentario"></textarea>
+        </div>
+      </div>
+
+      <!-- 8. CAJONES, ALMACENAMIENTO Y CONTROL DE ACCESO -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">08 â</span>
+          <h2 class="section-title">Cajones, almacenamiento y control de acceso</h2>
+        </div>
+        <p class="section-desc">
+          Cuestiones prÃ¡cticas que afectan el dÃ­a a dÃ­a: el uso de los cajones
+          de estacionamiento (incluyendo cargadores EV y almacenamiento) y el
+          control de entrada y salida en las casetas.
+        </p>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© tan a favor estÃ¡s de permitir <strong>estructuras de almacenamiento ordenadas</strong> en los cajones de estacionamiento?</label>
+          <span class="help">Racks, gabinetes o cargadores EV con criterio estÃ©tico uniforme â no improvisaciones individuales.</span>
+          <div class="scale">
+            <label><input type="radio" name="almacenamiento" value="1" /><span class="scale-num">1</span><span>En contra</span></label>
+            <label><input type="radio" name="almacenamiento" value="2" /><span class="scale-num">2</span></label>
+            <label><input type="radio" name="almacenamiento" value="3" /><span class="scale-num">3</span><span>Neutral</span></label>
+            <label><input type="radio" name="almacenamiento" value="4" /><span class="scale-num">4</span></label>
+            <label><input type="radio" name="almacenamiento" value="5" /><span class="scale-num">5</span><span>Muy a favor</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Si se aprobara, Â¿quÃ© condiciones consideras necesarias?</label>
+          <span class="help">Marca todas las que apliquen.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="almacen_condiciones" value="diseno" /><span>DiseÃ±o y color uniforme aprobado</span></label>
+            <label class="opt"><input type="checkbox" name="almacen_condiciones" value="dimensiones" /><span>Dimensiones mÃ¡ximas reglamentadas</span></label>
+            <label class="opt"><input type="checkbox" name="almacen_condiciones" value="seguro" /><span>Cierre con llave y a costo del propietario</span></label>
+            <label class="opt"><input type="checkbox" name="almacen_condiciones" value="ev" /><span>Compatibilidad con cargadores EV</span></label>
+            <label class="opt"><input type="checkbox" name="almacen_condiciones" value="aprobacion" /><span>AprobaciÃ³n previa por comitÃ© tÃ©cnico</span></label>
+            <label class="opt"><input type="checkbox" name="almacen_condiciones" value="ninguna" /><span>No deberÃ­an permitirse</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Sobre la pluma de acceso superior: actualmente los guardias deben abrirla manualmente, descuidando la caseta. Â¿Apoyas instalar una <strong>pluma automÃ¡tica</strong> arriba, igual que abajo?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="pluma_automatica" value="muy_favor" /><span>SÃ­, urgentemente</span></label>
+            <label class="opt"><input type="radio" name="pluma_automatica" value="favor" /><span>SÃ­, serÃ­a buena mejora</span></label>
+            <label class="opt"><input type="radio" name="pluma_automatica" value="depende" /><span>Depende del costo</span></label>
+            <label class="opt"><input type="radio" name="pluma_automatica" value="contra" /><span>No, prefiero el control humano</span></label>
+            <label class="opt"><input type="radio" name="pluma_automatica" value="no_se" /><span>No tengo opiniÃ³n</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿CÃ³mo evalÃºas el control actual de entrada y salida (registro de visitas, proveedores, repartidores)?</label>
+          <div class="scale">
+            <label><input type="radio" name="control_acceso" value="1" /><span class="scale-num">1</span><span>Muy malo</span></label>
+            <label><input type="radio" name="control_acceso" value="2" /><span class="scale-num">2</span></label>
+            <label><input type="radio" name="control_acceso" value="3" /><span class="scale-num">3</span><span>Regular</span></label>
+            <label><input type="radio" name="control_acceso" value="4" /><span class="scale-num">4</span></label>
+            <label><input type="radio" name="control_acceso" value="5" /><span class="scale-num">5</span><span>Muy bueno</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. NUEVO REGLAMENTO DE SANCIONES -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">09 â</span>
+          <h2 class="section-title">El nuevo reglamento de sanciones</h2>
+        </div>
+        <p class="section-desc">
+          La administraciÃ³n ha aprobado o propuesto una serie de cambios.
+          Queremos saber quÃ© tan informado estÃ¡s de cada uno y quÃ© te parecen.
+        </p>
+
+        <div class="field">
+          <label class="q">Â¿Estabas enterado de los siguientes cambios?</label>
+
+          <div class="knowledge-block">
+            <p class="fact">El nuevo reglamento contempla un <strong>recargo del 3% mensual compuesto</strong> sobre cuotas atrasadas (morosos).</p>
+            <div class="yn">
+              <label><input type="radio" name="sabia_morosos" value="si" /><span>SÃ­ lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_morosos" value="no" /><span>No lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_morosos" value="no_seguro" /><span>No estoy seguro</span></label>
+            </div>
+          </div>
+
+          <div class="knowledge-block">
+            <p class="fact">Existe una <strong>propuesta de reglamento para instalaciÃ³n de cargadores EV</strong> (vehÃ­culos elÃ©ctricos).</p>
+            <div class="yn">
+              <label><input type="radio" name="sabia_ev" value="si" /><span>SÃ­ lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_ev" value="no" /><span>No lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_ev" value="no_seguro" /><span>No estoy seguro</span></label>
+            </div>
+          </div>
+
+          <div class="knowledge-block">
+            <p class="fact">Se han aplicado <strong>nuevas sanciones para tenencia y manejo de mascotas</strong> en Ã¡reas comunes.</p>
+            <div class="yn">
+              <label><input type="radio" name="sabia_mascotas" value="si" /><span>SÃ­ lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_mascotas" value="no" /><span>No lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_mascotas" value="no_seguro" /><span>No estoy seguro</span></label>
+            </div>
+          </div>
+
+          <div class="knowledge-block">
+            <p class="fact">Hay <strong>cambios recientes en el personal de seguridad</strong> (nuevos agentes).</p>
+            <div class="yn">
+              <label><input type="radio" name="sabia_seguridad" value="si" /><span>SÃ­ lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_seguridad" value="no" /><span>No lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_seguridad" value="no_seguro" /><span>No estoy seguro</span></label>
+            </div>
+          </div>
+
+          <div class="knowledge-block">
+            <p class="fact">Se han realizado <strong>cambios de empleados</strong> (limpieza, mantenimiento, administraciÃ³n).</p>
+            <div class="yn">
+              <label><input type="radio" name="sabia_empleados" value="si" /><span>SÃ­ lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_empleados" value="no" /><span>No lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_empleados" value="no_seguro" /><span>No estoy seguro</span></label>
+            </div>
+          </div>
+
+          <div class="knowledge-block">
+            <p class="fact">Se estÃ¡ cobrando una <strong>cuota adicional de aproximadamente $500 pesos</strong> destinada a pagar representaciÃ³n legal (un abogado contratado por la administraciÃ³n).</p>
+            <div class="yn">
+              <label><input type="radio" name="sabia_abogado" value="si" /><span>SÃ­ lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_abogado" value="no" /><span>No lo sabÃ­a</span></label>
+              <label><input type="radio" name="sabia_abogado" value="no_seguro" /><span>No estoy seguro</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© opinas de la cuota adicional para representaciÃ³n legal?</label>
+          <span class="help">La justificaciÃ³n original fue proteger al desarrollo de construcciones vecinas. Hoy parece estar siendo utilizada para asuntos de la administraciÃ³n.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="op_abogado" value="no_acuerdo" /><span>No estoy de acuerdo, no la pedirÃ­a</span></label>
+            <label class="opt"><input type="radio" name="op_abogado" value="solo_comunidad" /><span>De acuerdo solo si beneficia a la comunidad, no a la administraciÃ³n</span></label>
+            <label class="opt"><input type="radio" name="op_abogado" value="transparencia" /><span>De acuerdo si hay transparencia total de su uso</span></label>
+            <label class="opt"><input type="radio" name="op_abogado" value="acuerdo" /><span>De acuerdo, es necesaria</span></label>
+            <label class="opt"><input type="radio" name="op_abogado" value="no_se" /><span>No tengo opiniÃ³n</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿A quiÃ©n consideras que debe representar el abogado pagado con cuotas comunitarias?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="abogado_quien" value="comunidad" /><span>A la comunidad / asamblea general</span></label>
+            <label class="opt"><input type="radio" name="abogado_quien" value="ambos" /><span>A la mesa directiva y comunidad</span></label>
+            <label class="opt"><input type="radio" name="abogado_quien" value="admin" /><span>Al administrador en lo personal</span></label>
+            <label class="opt"><input type="radio" name="abogado_quien" value="ninguno" /><span>No deberÃ­a haber abogado pagado</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">EspecÃ­ficamente sobre el <strong>recargo del 3% mensual compuesto</strong> a morosos: Â¿quÃ© opinas?</label>
+          <span class="help">Un recargo compuesto del 3% mensual equivale a mÃ¡s del 42% anual. Un recargo simple serÃ­a mÃ¡s razonable.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="op_recargo" value="excesivo" /><span>Excesivo, es desproporcionado</span></label>
+            <label class="opt"><input type="radio" name="op_recargo" value="simple" /><span>DeberÃ­a ser simple, no compuesto</span></label>
+            <label class="opt"><input type="radio" name="op_recargo" value="menor" /><span>El porcentaje deberÃ­a ser menor</span></label>
+            <label class="opt"><input type="radio" name="op_recargo" value="adecuado" /><span>Me parece adecuado</span></label>
+            <label class="opt"><input type="radio" name="op_recargo" value="insuficiente" /><span>Es insuficiente, deberÃ­a ser mayor</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© tan de acuerdo estÃ¡s con una <strong>cobranza mÃ¡s transparente y firme</strong> hacia quienes no pagan sus cuotas?</label>
+          <span class="help">Un sistema claro, con publicaciÃ³n de adeudos, recordatorios programados y consecuencias previsibles â sin recargos abusivos.</span>
+          <div class="scale">
+            <label><input type="radio" name="cobranza_firme" value="1" /><span class="scale-num">1</span><span>En contra</span></label>
+            <label><input type="radio" name="cobranza_firme" value="2" /><span class="scale-num">2</span></label>
+            <label><input type="radio" name="cobranza_firme" value="3" /><span class="scale-num">3</span><span>Neutral</span></label>
+            <label><input type="radio" name="cobranza_firme" value="4" /><span class="scale-num">4</span></label>
+            <label><input type="radio" name="cobranza_firme" value="5" /><span class="scale-num">5</span><span>Muy a favor</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Has leÃ­do el reglamento interno de Bella Vista?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="leyo_reg" value="completo" /><span>SÃ­, completo</span></label>
+            <label class="opt"><input type="radio" name="leyo_reg" value="partes" /><span>SÃ­, partes</span></label>
+            <label class="opt"><input type="radio" name="leyo_reg" value="no" /><span>No lo he leÃ­do</span></label>
+            <label class="opt"><input type="radio" name="leyo_reg" value="no_acceso" /><span>No tengo acceso a Ã©l</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© temas del reglamento crees que necesitan revisiÃ³n o actualizaciÃ³n?</label>
+          <span class="help">Marca todos los que apliquen.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="reg_temas" value="ev" /><span>Estaciones de carga EV</span></label>
+            <label class="opt"><input type="checkbox" name="reg_temas" value="mascotas" /><span>Mascotas y Ã¡reas comunes</span></label>
+            <label class="opt"><input type="checkbox" name="reg_temas" value="rentas" /><span>Rentas a corto plazo (Airbnb)</span></label>
+            <label class="opt"><input type="checkbox" name="reg_temas" value="ruido" /><span>Ruido y convivencias</span></label>
+            <label class="opt"><input type="checkbox" name="reg_temas" value="obras" /><span>Obras y remodelaciones</span></label>
+            <label class="opt"><input type="checkbox" name="reg_temas" value="estacionamiento" /><span>Estacionamiento y almacenamiento</span></label>
+            <label class="opt"><input type="checkbox" name="reg_temas" value="club" /><span>Uso del club / alberca</span></label>
+            <label class="opt"><input type="checkbox" name="reg_temas" value="multas" /><span>Multas y sanciones</span></label>
+            <label class="opt"><input type="checkbox" name="reg_temas" value="morosos" /><span>Recargos a morosos</span></label>
+            <label class="opt"><input type="checkbox" name="reg_temas" value="jurisdiccion" /><span>LÃ­mites de jurisdicciÃ³n de la AC</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. SERVICIOS Y ADMINISTRACIÃN -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">10 â</span>
+          <h2 class="section-title">Conformidad con servicios y administraciÃ³n</h2>
+        </div>
+        <p class="section-desc">
+          Califica del 1 al 10 quÃ© tan conforme estÃ¡s con cada uno de estos aspectos.
+          1 = nada conforme, 10 = totalmente conforme.
+        </p>
+
+        <div class="field">
+          <div class="matrix-row">
+            <div class="matrix-label">ComunicaciÃ³n de la administraciÃ³n hacia residentes</div>
+            <div class="matrix-help">Avisos, notificaciones, claridad y oportunidad.</div>
+            <div class="scale10">
+              <label><input type="radio" name="conf_comunicacion" value="1" />1</label>
+              <label><input type="radio" name="conf_comunicacion" value="2" />2</label>
+              <label><input type="radio" name="conf_comunicacion" value="3" />3</label>
+              <label><input type="radio" name="conf_comunicacion" value="4" />4</label>
+              <label><input type="radio" name="conf_comunicacion" value="5" />5</label>
+              <label><input type="radio" name="conf_comunicacion" value="6" />6</label>
+              <label><input type="radio" name="conf_comunicacion" value="7" />7</label>
+              <label><input type="radio" name="conf_comunicacion" value="8" />8</label>
+              <label><input type="radio" name="conf_comunicacion" value="9" />9</label>
+              <label><input type="radio" name="conf_comunicacion" value="10" />10</label>
+            </div>
+          </div>
+
+          <div class="matrix-row">
+            <div class="matrix-label">Plataforma de cobros y facturaciÃ³n</div>
+            <div class="matrix-help">Facilidad de pago, comprobantes, historial.</div>
+            <div class="scale10">
+              <label><input type="radio" name="conf_cobros" value="1" />1</label>
+              <label><input type="radio" name="conf_cobros" value="2" />2</label>
+              <label><input type="radio" name="conf_cobros" value="3" />3</label>
+              <label><input type="radio" name="conf_cobros" value="4" />4</label>
+              <label><input type="radio" name="conf_cobros" value="5" />5</label>
+              <label><input type="radio" name="conf_cobros" value="6" />6</label>
+              <label><input type="radio" name="conf_cobros" value="7" />7</label>
+              <label><input type="radio" name="conf_cobros" value="8" />8</label>
+              <label><input type="radio" name="conf_cobros" value="9" />9</label>
+              <label><input type="radio" name="conf_cobros" value="10" />10</label>
+            </div>
+          </div>
+
+          <div class="matrix-row">
+            <div class="matrix-label">Transparencia en los gastos de la administraciÃ³n</div>
+            <div class="matrix-help">Estados de cuenta, informes bimestrales, justificaciÃ³n de gastos.</div>
+            <div class="scale10">
+              <label><input type="radio" name="conf_transparencia" value="1" />1</label>
+              <label><input type="radio" name="conf_transparencia" value="2" />2</label>
+              <label><input type="radio" name="conf_transparencia" value="3" />3</label>
+              <label><input type="radio" name="conf_transparencia" value="4" />4</label>
+              <label><input type="radio" name="conf_transparencia" value="5" />5</label>
+              <label><input type="radio" name="conf_transparencia" value="6" />6</label>
+              <label><input type="radio" name="conf_transparencia" value="7" />7</label>
+              <label><input type="radio" name="conf_transparencia" value="8" />8</label>
+              <label><input type="radio" name="conf_transparencia" value="9" />9</label>
+              <label><input type="radio" name="conf_transparencia" value="10" />10</label>
+            </div>
+          </div>
+
+          <div class="matrix-row">
+            <div class="matrix-label">Cambio reciente de empleados</div>
+            <div class="matrix-help">Limpieza, mantenimiento, administrativos.</div>
+            <div class="scale10">
+              <label><input type="radio" name="conf_empleados" value="1" />1</label>
+              <label><input type="radio" name="conf_empleados" value="2" />2</label>
+              <label><input type="radio" name="conf_empleados" value="3" />3</label>
+              <label><input type="radio" name="conf_empleados" value="4" />4</label>
+              <label><input type="radio" name="conf_empleados" value="5" />5</label>
+              <label><input type="radio" name="conf_empleados" value="6" />6</label>
+              <label><input type="radio" name="conf_empleados" value="7" />7</label>
+              <label><input type="radio" name="conf_empleados" value="8" />8</label>
+              <label><input type="radio" name="conf_empleados" value="9" />9</label>
+              <label><input type="radio" name="conf_empleados" value="10" />10</label>
+            </div>
+          </div>
+
+          <div class="matrix-row">
+            <div class="matrix-label">Cambio reciente de personal de seguridad</div>
+            <div class="matrix-help">Nuevos agentes contratados recientemente.</div>
+            <div class="scale10">
+              <label><input type="radio" name="conf_seguridad" value="1" />1</label>
+              <label><input type="radio" name="conf_seguridad" value="2" />2</label>
+              <label><input type="radio" name="conf_seguridad" value="3" />3</label>
+              <label><input type="radio" name="conf_seguridad" value="4" />4</label>
+              <label><input type="radio" name="conf_seguridad" value="5" />5</label>
+              <label><input type="radio" name="conf_seguridad" value="6" />6</label>
+              <label><input type="radio" name="conf_seguridad" value="7" />7</label>
+              <label><input type="radio" name="conf_seguridad" value="8" />8</label>
+              <label><input type="radio" name="conf_seguridad" value="9" />9</label>
+              <label><input type="radio" name="conf_seguridad" value="10" />10</label>
+            </div>
+          </div>
+
+          <div class="matrix-row">
+            <div class="matrix-label">GestiÃ³n general del administrador</div>
+            <div class="matrix-help">AtenciÃ³n a solicitudes, decisiones, responsabilidad.</div>
+            <div class="scale10">
+              <label><input type="radio" name="conf_admin" value="1" />1</label>
+              <label><input type="radio" name="conf_admin" value="2" />2</label>
+              <label><input type="radio" name="conf_admin" value="3" />3</label>
+              <label><input type="radio" name="conf_admin" value="4" />4</label>
+              <label><input type="radio" name="conf_admin" value="5" />5</label>
+              <label><input type="radio" name="conf_admin" value="6" />6</label>
+              <label><input type="radio" name="conf_admin" value="7" />7</label>
+              <label><input type="radio" name="conf_admin" value="8" />8</label>
+              <label><input type="radio" name="conf_admin" value="9" />9</label>
+              <label><input type="radio" name="conf_admin" value="10" />10</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- SISTEMA DE PAGO -->
+        <div class="field">
+          <label class="q">Â¿CÃ³mo pagas actualmente las cuotas de mantenimiento?</label>
+          <span class="help">Marca todas las que uses.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="pago_actual" value="transferencia" /><span>Transferencia bancaria</span></label>
+            <label class="opt"><input type="checkbox" name="pago_actual" value="deposito" /><span>DepÃ³sito en ventanilla</span></label>
+            <label class="opt"><input type="checkbox" name="pago_actual" value="efectivo" /><span>Efectivo en oficina</span></label>
+            <label class="opt"><input type="checkbox" name="pago_actual" value="cheque" /><span>Cheque</span></label>
+            <label class="opt"><input type="checkbox" name="pago_actual" value="tarjeta" /><span>Tarjeta de crÃ©dito o dÃ©bito</span></label>
+            <label class="opt"><input type="checkbox" name="pago_actual" value="no_pago" /><span>No estoy al corriente</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© mÃ©todos de pago te gustarÃ­a que ofreciera la administraciÃ³n?</label>
+          <span class="help">Marca todos los que te interesen.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="pago_deseado" value="automatico" /><span>Cargo automÃ¡tico recurrente (suscripciÃ³n)</span></label>
+            <label class="opt"><input type="checkbox" name="pago_deseado" value="tarjeta_sin_comision" /><span>Tarjeta sin comisiÃ³n adicional</span></label>
+            <label class="opt"><input type="checkbox" name="pago_deseado" value="adelantado" /><span>Pago anual adelantado con descuento</span></label>
+            <label class="opt"><input type="checkbox" name="pago_deseado" value="semestral" /><span>Pago semestral con descuento</span></label>
+            <label class="opt"><input type="checkbox" name="pago_deseado" value="oxxo" /><span>OXXO o tienda de conveniencia</span></label>
+            <label class="opt"><input type="checkbox" name="pago_deseado" value="link" /><span>Link de pago (SPEI, CoDi)</span></label>
+            <label class="opt"><input type="checkbox" name="pago_deseado" value="portal" /><span>Portal web con historial y recibos</span></label>
+            <label class="opt"><input type="checkbox" name="pago_deseado" value="app" /><span>App mÃ³vil dedicada</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© te parece <strong>cobrar comisiÃ³n adicional al usuario</strong> por pagar con tarjeta?</label>
+          <span class="help">Hoy quien quiere usar tarjeta paga la comisiÃ³n bancaria. Hay administraciones que la absorben como costo operativo.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="comision_tarjeta" value="injusto" /><span>Injusto, deberÃ­a absorberla la AC</span></label>
+            <label class="opt"><input type="radio" name="comision_tarjeta" value="dividida" /><span>DeberÃ­a dividirse entre todos</span></label>
+            <label class="opt"><input type="radio" name="comision_tarjeta" value="usuario" /><span>EstÃ¡ bien que la pague quien usa tarjeta</span></label>
+            <label class="opt"><input type="radio" name="comision_tarjeta" value="no_se" /><span>No tengo opiniÃ³n</span></label>
+          </div>
+        </div>
+
+        <!-- VIVA OK -->
+        <div class="field">
+          <div class="knowledge-block" style="border-left-color: var(--sea); background: var(--paper-warm);">
+            <p class="fact" style="font-size:14.5px;">
+              La administraciÃ³n usa una plataforma de terceros llamada
+              <strong>VivaOK</strong> para enviar notificaciones, estados de
+              cuenta y avisos. Queremos saber quÃ© tan bien funciona para ti.
+            </p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Usas o revisas la plataforma VivaOK?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="vivaok_uso" value="frecuente" /><span>SÃ­, la reviso frecuentemente</span></label>
+            <label class="opt"><input type="radio" name="vivaok_uso" value="ocasional" /><span>La reviso ocasionalmente</span></label>
+            <label class="opt"><input type="radio" name="vivaok_uso" value="rara" /><span>Casi nunca la reviso</span></label>
+            <label class="opt"><input type="radio" name="vivaok_uso" value="nunca" /><span>Nunca la he usado</span></label>
+            <label class="opt"><input type="radio" name="vivaok_uso" value="no_conozco" /><span>No conocÃ­a esta plataforma</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Llegan a ti las notificaciones importantes (avisos, convocatorias, estados de cuenta) por VivaOK?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="vivaok_notif" value="todas" /><span>SÃ­, me llegan todas</span></label>
+            <label class="opt"><input type="radio" name="vivaok_notif" value="algunas" /><span>Solo algunas</span></label>
+            <label class="opt"><input type="radio" name="vivaok_notif" value="ninguna" /><span>No me llegan</span></label>
+            <label class="opt"><input type="radio" name="vivaok_notif" value="me_entero_otra" /><span>Me entero por otros medios</span></label>
+            <label class="opt"><input type="radio" name="vivaok_notif" value="no_aplica" /><span>No aplica, no la uso</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Si tuvieras que elegir, Â¿prefieres seguir usando VivaOK o tener una <strong>plataforma propia de Bella Vista</strong>?</label>
+          <span class="help">Una plataforma propia podrÃ­a integrar estados de cuenta, votaciones, listado de departamentos en renta o venta, avisos, y mÃ¡s â todo bajo control de la comunidad.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="plataforma_pref" value="propia" /><span>Plataforma propia de Bella Vista</span></label>
+            <label class="opt"><input type="radio" name="plataforma_pref" value="vivaok" /><span>Seguir con VivaOK</span></label>
+            <label class="opt"><input type="radio" name="plataforma_pref" value="ambas" /><span>Ambas en paralelo</span></label>
+            <label class="opt"><input type="radio" name="plataforma_pref" value="no_se" /><span>No tengo preferencia</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. INFRAESTRUCTURA Y ENERGÃA -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">11 â</span>
+          <h2 class="section-title">Infraestructura, energÃ­a y mantenimiento estructural</h2>
+        </div>
+        <p class="section-desc">
+          Hay reportes de extintores retirados, goteras sin atender, daÃ±os estructurales
+          en departamentos, cortes constantes de luz y problemas continuos con la
+          recolecciÃ³n de basura. Queremos dimensionar el problema.
+        </p>
+
+        <div class="field">
+          <label class="q">Â¿Has experimentado o detectado alguno de los siguientes problemas?</label>
+          <span class="help">Marca todos los que apliquen.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="infra_problemas" value="extintores" /><span>Extintores ausentes o vencidos</span></label>
+            <label class="opt"><input type="checkbox" name="infra_problemas" value="goteras" /><span>Goteras o filtraciones de agua</span></label>
+            <label class="opt"><input type="checkbox" name="infra_problemas" value="luz" /><span>Cortes frecuentes de luz</span></label>
+            <label class="opt"><input type="checkbox" name="infra_problemas" value="estructural" /><span>DaÃ±os estructurales en mi unidad</span></label>
+            <label class="opt"><input type="checkbox" name="infra_problemas" value="basura" /><span>Contenedores de basura desbordados / sin recolectar</span></label>
+            <label class="opt"><input type="checkbox" name="infra_problemas" value="alberca" /><span>Albercas sin mantenimiento / inutilizables</span></label>
+            <label class="opt"><input type="checkbox" name="infra_problemas" value="elevadores" /><span>Elevadores con fallas</span></label>
+            <label class="opt"><input type="checkbox" name="infra_problemas" value="agua" /><span>Cortes o baja presiÃ³n de agua</span></label>
+            <label class="opt"><input type="checkbox" name="infra_problemas" value="ninguno" /><span>Ninguno</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Con quÃ© frecuencia notas problemas con la recolecciÃ³n de basura?</label>
+          <span class="help">Contenedores desbordados, recolecciÃ³n irregular, mal olor, plagas.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="basura_frecuencia" value="constante" /><span>Constantemente, es un problema</span></label>
+            <label class="opt"><input type="radio" name="basura_frecuencia" value="seguido" /><span>Seguido, varias veces por semana</span></label>
+            <label class="opt"><input type="radio" name="basura_frecuencia" value="ocasional" /><span>Ocasionalmente</span></label>
+            <label class="opt"><input type="radio" name="basura_frecuencia" value="rara_vez" /><span>Rara vez o nunca</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© problemas especÃ­ficos has notado con los contenedores de basura?</label>
+          <span class="help">Marca todos los que apliquen.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="basura_problemas" value="desbordados" /><span>Desbordados / saturados</span></label>
+            <label class="opt"><input type="checkbox" name="basura_problemas" value="frecuencia" /><span>RecolecciÃ³n irregular o tardÃ­a</span></label>
+            <label class="opt"><input type="checkbox" name="basura_problemas" value="olor" /><span>Mal olor en Ã¡reas comunes</span></label>
+            <label class="opt"><input type="checkbox" name="basura_problemas" value="plagas" /><span>Plagas (ratas, cucarachas, moscas)</span></label>
+            <label class="opt"><input type="checkbox" name="basura_problemas" value="animales" /><span>Animales abriendo bolsas</span></label>
+            <label class="opt"><input type="checkbox" name="basura_problemas" value="ubicacion" /><span>UbicaciÃ³n inadecuada o cerca de unidades</span></label>
+            <label class="opt"><input type="checkbox" name="basura_problemas" value="separacion" /><span>Falta de separaciÃ³n de residuos</span></label>
+            <label class="opt"><input type="checkbox" name="basura_problemas" value="ninguno" /><span>Ninguno</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© tan importante es para ti tener estabilidad en la red elÃ©ctrica?</label>
+          <div class="scale">
+            <label><input type="radio" name="importancia_luz" value="1" /><span class="scale-num">1</span><span>Nada importante</span></label>
+            <label><input type="radio" name="importancia_luz" value="2" /><span class="scale-num">2</span></label>
+            <label><input type="radio" name="importancia_luz" value="3" /><span class="scale-num">3</span><span>Importante</span></label>
+            <label><input type="radio" name="importancia_luz" value="4" /><span class="scale-num">4</span></label>
+            <label><input type="radio" name="importancia_luz" value="5" /><span class="scale-num">5</span><span>CrÃ­tico</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿EstarÃ­as a favor de instalar un generador de respaldo para Ã¡reas comunes y/o el desarrollo?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="generador" value="muy_favor" /><span>Muy a favor</span></label>
+            <label class="opt"><input type="radio" name="generador" value="favor" /><span>A favor</span></label>
+            <label class="opt"><input type="radio" name="generador" value="depende_costo" /><span>Depende del costo</span></label>
+            <label class="opt"><input type="radio" name="generador" value="contra" /><span>En contra</span></label>
+            <label class="opt"><input type="radio" name="generador" value="no_se" /><span>No tengo opiniÃ³n</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="infra_comentario">Â¿Hay un problema de infraestructura especÃ­fico que la administraciÃ³n no ha atendido?</label>
+          <textarea id="infra_comentario" name="infra_comentario" rows="4" placeholder="Describe brevemente el problema, ubicaciÃ³n y desde cuÃ¡ndo."></textarea>
+        </div>
+      </div>
+
+      <!-- 12. SEGURIDAD PERCIBIDA -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">12 â</span>
+          <h2 class="section-title">Seguridad percibida e inconformidades</h2>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© tan seguro te sientes viviendo o estando en Bella Vista?</label>
+          <div class="scale10">
+            <label><input type="radio" name="sensacion_seguridad" value="1" />1</label>
+            <label><input type="radio" name="sensacion_seguridad" value="2" />2</label>
+            <label><input type="radio" name="sensacion_seguridad" value="3" />3</label>
+            <label><input type="radio" name="sensacion_seguridad" value="4" />4</label>
+            <label><input type="radio" name="sensacion_seguridad" value="5" />5</label>
+            <label><input type="radio" name="sensacion_seguridad" value="6" />6</label>
+            <label><input type="radio" name="sensacion_seguridad" value="7" />7</label>
+            <label><input type="radio" name="sensacion_seguridad" value="8" />8</label>
+            <label><input type="radio" name="sensacion_seguridad" value="9" />9</label>
+            <label><input type="radio" name="sensacion_seguridad" value="10" />10</label>
+          </div>
+          <div class="scale-caption">
+            <span>1 â Nada seguro</span>
+            <span>10 â Totalmente seguro</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="inconformidad">Â¿QuÃ© te causa mayor inconformidad como residente o propietario?</label>
+          <span class="help">Tu respuesta libre. SÃ© directo, este es el espacio para decir lo que piensas.</span>
+          <textarea id="inconformidad" name="inconformidad" rows="6" placeholder="Ej. la administraciÃ³n hace lo que quiere, no hay transparencia, las cuentas estÃ¡n bloqueadas, los departamentos se estÃ¡n deteriorando, etc."></textarea>
+        </div>
+      </div>
+
+      <!-- 13. TRATO DESIGUAL -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">13 â</span>
+          <h2 class="section-title">Trato desigual y experiencias personales</h2>
+        </div>
+        <p class="section-desc">
+          Esta secciÃ³n es importante: queremos identificar si hay vecinos que
+          han recibido trato preferencial o, por el contrario, han sido objeto de
+          maltrato u hostilidad por parte de personal, autoridades de la AC o
+          terceros relacionados con la administraciÃ³n.
+        </p>
+
+        <div class="field">
+          <label class="q">Â¿Has presenciado o experimentado trato desigual entre residentes?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="trato_desigual" value="preferencial" /><span>SÃ­, trato preferencial a algunos</span></label>
+            <label class="opt"><input type="radio" name="trato_desigual" value="maltrato" /><span>SÃ­, maltrato hacia algunos</span></label>
+            <label class="opt"><input type="radio" name="trato_desigual" value="ambos" /><span>Ambos casos</span></label>
+            <label class="opt"><input type="radio" name="trato_desigual" value="no" /><span>No he notado nada</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Has sentido que tus solicitudes o quejas reciben menos atenciÃ³n que las de otros?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="atencion_quejas" value="si_frecuente" /><span>SÃ­, frecuentemente</span></label>
+            <label class="opt"><input type="radio" name="atencion_quejas" value="si_alguna" /><span>SÃ­, alguna vez</span></label>
+            <label class="opt"><input type="radio" name="atencion_quejas" value="no" /><span>No</span></label>
+            <label class="opt"><input type="radio" name="atencion_quejas" value="nunca_pedido" /><span>Nunca he pedido nada</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="trato_descripcion">Si tienes una experiencia que quieras compartir, este es el espacio</label>
+          <span class="help">Tu testimonio es valioso. Puede ser propio o algo que hayas presenciado. SerÃ¡ tratado con discreciÃ³n.</span>
+          <textarea id="trato_descripcion" name="trato_descripcion" rows="5"></textarea>
+        </div>
+      </div>
+
+      <!-- 14. VISIÃN A FUTURO -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">14 â</span>
+          <h2 class="section-title">VisiÃ³n a futuro: Â¿quÃ© te gustarÃ­a ver en Bella Vista?</h2>
+        </div>
+        <p class="section-desc">
+          MÃ¡s allÃ¡ de resolver lo urgente, queremos saber hacia dÃ³nde quieres
+          que evolucione la comunidad. Esto define las inversiones, mejoras y
+          tecnologÃ­a que vale la pena impulsar.
+        </p>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© mejoras te gustarÃ­a ver implementadas?</label>
+          <span class="help">Marca todas las que te interesen.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="portal" /><span>Portal o app con transparencia financiera</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="cargadores_ev" /><span>Cargadores para vehÃ­culos elÃ©ctricos</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="generador" /><span>Generador / planta de luz de respaldo</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="vigilancia_tech" /><span>Mejor vigilancia (cÃ¡maras, sistemas)</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="acceso_tech" /><span>Acceso automatizado (plumas, lectores)</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="calefaccion_alberca" /><span>CalefacciÃ³n de alberca</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="mantenimiento_alberca" /><span>Mantenimiento adecuado de alberca</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="gym" /><span>Gimnasio / Ã¡rea de ejercicio</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="areas_verdes" /><span>Mejores Ã¡reas verdes</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="privacidad" /><span>Mayor privacidad para residentes</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="sin_hostigamiento" /><span>Ambiente sin hostigamiento</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="energia_solar" /><span>Paneles solares en Ã¡reas comunes</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="reciclaje" /><span>Sistema de reciclaje y separaciÃ³n</span></label>
+            <label class="opt"><input type="checkbox" name="vision_mejoras" value="paqueteria" /><span>Casilleros / lockers de paqueterÃ­a</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© tan importante es para ti que Bella Vista invierta en <strong>tecnologÃ­a y modernizaciÃ³n</strong>?</label>
+          <span class="help">Sistemas de pago, transparencia, vigilancia, accesos, comunicaciÃ³n.</span>
+          <div class="scale">
+            <label><input type="radio" name="vision_tech" value="1" /><span class="scale-num">1</span><span>Nada importante</span></label>
+            <label><input type="radio" name="vision_tech" value="2" /><span class="scale-num">2</span></label>
+            <label><input type="radio" name="vision_tech" value="3" /><span class="scale-num">3</span><span>Importante</span></label>
+            <label><input type="radio" name="vision_tech" value="4" /><span class="scale-num">4</span></label>
+            <label><input type="radio" name="vision_tech" value="5" /><span class="scale-num">5</span><span>CrÃ­tico</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="vision_libre">Â¿QuÃ© otra mejora o cambio te gustarÃ­a proponer?</label>
+          <span class="help">SÃ© tan especÃ­fico como quieras. Las mejores ideas suelen venir de quienes viven el dÃ­a a dÃ­a.</span>
+          <textarea id="vision_libre" name="vision_libre" rows="4"></textarea>
+        </div>
+
+        <!-- VIVA BELLA VISTA -->
+        <div class="field">
+          <div class="knowledge-block" style="border-left-color: var(--accent); background: #fff;">
+            <p class="fact" style="font-size:14.5px; margin-bottom: 4px;">
+              <strong>Sobre vivabellavista.com</strong>
+            </p>
+            <p class="fact" style="font-size:14px; margin: 0;">
+              Estamos construyendo un sitio independiente para la comunidad
+              donde se podrÃ¡n publicar departamentos en renta, venta o Airbnb,
+              consultar estados de cuenta, ver avisos comunitarios y mucho
+              mÃ¡s â todo controlado por nosotros, no por terceros.
+            </p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Te interesa que tu departamento aparezca listado en vivabellavista.com?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="listing" value="renta" /><span>SÃ­, estÃ¡ / estarÃ¡ en renta</span></label>
+            <label class="opt"><input type="checkbox" name="listing" value="venta" /><span>SÃ­, estÃ¡ / estarÃ¡ en venta</span></label>
+            <label class="opt"><input type="checkbox" name="listing" value="airbnb" /><span>SÃ­, lo manejo en Airbnb / corto plazo</span></label>
+            <label class="opt"><input type="checkbox" name="listing" value="futuro" /><span>Posiblemente en el futuro</span></label>
+            <label class="opt"><input type="checkbox" name="listing" value="no" /><span>No, solo lo uso para vivir</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿QuÃ© funciones te gustarÃ­a que tuviera vivabellavista.com?</label>
+          <span class="help">Marca todas las que te interesen.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="estados" /><span>Consultar estados de cuenta</span></label>
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="pagos" /><span>Pagar cuotas en lÃ­nea</span></label>
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="avisos" /><span>Avisos y convocatorias</span></label>
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="actas" /><span>Acceso a actas y reglamento</span></label>
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="listings" /><span>Listado de renta / venta / Airbnb</span></label>
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="votaciones" /><span>Votaciones en lÃ­nea</span></label>
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="reportes" /><span>Reportar problemas / quejas</span></label>
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="directorio" /><span>Directorio comunitario</span></label>
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="proveedores" /><span>Recomendaciones de proveedores</span></label>
+            <label class="opt"><input type="checkbox" name="vbv_funciones" value="reservas" /><span>Reservas de Ã¡reas comunes</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="vbv_preocupaciones">Â¿Tienes alguna preocupaciÃ³n o sugerencia sobre vivabellavista.com?</label>
+          <span class="help">Privacidad, costos, gobernanza, lo que se te ocurra.</span>
+          <textarea id="vbv_preocupaciones" name="vbv_preocupaciones" rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- 15. PRIORIDADES -->
+      <div class="section-block">
+        <div class="section-head">
+          <span class="section-num">15 â</span>
+          <h2 class="section-title">Prioridades para la comunidad</h2>
+        </div>
+
+        <div class="field">
+          <label class="q">Si pudieras cambiar tres cosas en Bella Vista, Â¿cuÃ¡les serÃ­an las mÃ¡s urgentes?</label>
+          <span class="help">Selecciona hasta 3 opciones.</span>
+          <div class="options cols-2">
+            <label class="opt"><input type="checkbox" name="prioridades" value="transparencia" /><span>Mayor transparencia financiera</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="vigilancia" /><span>Mejorar vigilancia y seguridad</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="comunicacion" /><span>Mejor comunicaciÃ³n con residentes</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="mantenimiento" /><span>Mantenimiento de Ã¡reas comunes</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="reglamento" /><span>Actualizar el reglamento</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="renovar_admin" /><span>Cambiar al administrador</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="renovar_mesa" /><span>Renovar la mesa directiva</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="renovar_comite" /><span>Renovar el comitÃ© de vigilancia</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="trato_equitativo" /><span>Trato equitativo a todos</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="electrica" /><span>Estabilidad elÃ©ctrica / generador</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="estructural" /><span>Reparaciones estructurales urgentes</span></label>
+            <label class="opt"><input type="checkbox" name="prioridades" value="club_uso" /><span>Recuperar el club / alberca</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q" for="comentario_final">Mensaje libre para los organizadores</label>
+          <span class="help">Lo que quieras compartir y no haya tenido espacio en las preguntas anteriores.</span>
+          <textarea id="comentario_final" name="comentario_final" rows="5"></textarea>
+        </div>
+
+        <div class="field">
+          <div class="knowledge-block" style="border-left-color: var(--sea); background: var(--paper-warm);">
+            <p class="fact" style="font-size:15px; margin-bottom: 8px;">
+              <strong>CÃ³mo serÃ¡ la videollamada:</strong>
+            </p>
+            <ul style="margin: 0 0 0 18px; padding: 0; font-size: 14px; line-height: 1.6; color: var(--ink-soft);">
+              <li><strong>Moderada</strong> por residentes â todos tienen turno de palabra</li>
+              <li><strong>Minuta escrita</strong> de los temas, acuerdos y siguientes pasos</li>
+              <li><strong>Sin gritos ni agresiones</strong> â se levanta la mano para hablar</li>
+              <li><strong>VotaciÃ³n por Zoom</strong> levantando la mano cuando aplique</li>
+              <li><strong>Reconocimiento</strong> a todos los asistentes (propietarios, compradores notariados, representantes legales, inquilinos con voz)</li>
+              <li><strong>Orden del dÃ­a</strong> compartido con anticipaciÃ³n</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Te interesa unirte a la videollamada por Zoom para compartir resultados y siguientes pasos?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="zoom" value="si" /><span>SÃ­, mÃ¡ndenme la invitaciÃ³n</span></label>
+            <label class="opt"><input type="radio" name="zoom" value="quizas" /><span>Tal vez, dependiendo de la fecha</span></label>
+            <label class="opt"><input type="radio" name="zoom" value="no" /><span>No, solo quiero llenar la encuesta</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Â¿Te gustarÃ­a participar como moderador, vocero o apoyo en la organizaciÃ³n de la videollamada?</label>
+          <div class="options cols-2">
+            <label class="opt"><input type="radio" name="zoom_organizar" value="moderador" /><span>SÃ­, como moderador</span></label>
+            <label class="opt"><input type="radio" name="zoom_organizar" value="apoyo" /><span>SÃ­, en apoyo organizativo</span></label>
+            <label class="opt"><input type="radio" name="zoom_organizar" value="vocero" /><span>SÃ­, como vocero de un tema especÃ­fico</span></label>
+            <label class="opt"><input type="radio" name="zoom_organizar" value="no" /><span>No, solo quiero asistir</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-block">
+        <p class="privacy">
+          Al enviar esta encuesta confirmas que tus respuestas serÃ¡n utilizadas
+          Ãºnicamente para los fines de esta convocatoria comunitaria. Tus datos
+          personales no serÃ¡n compartidos con terceros ni publicados.
+        </p>
+        <button type="submit">Enviar mis respuestas â</button>
+        <div class="status success" id="statusOK">
+          Â¡Gracias! Tu respuesta fue enviada. En los prÃ³ximos dÃ­as recibirÃ¡s un correo y un mensaje de WhatsApp con la invitaciÃ³n a la videollamada.
+        </div>
+        <div class="status error" id="statusERR">
+          Por favor revisa los campos marcados con asterisco. No se pudo enviar.
+        </div>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div>
+      <div class="brand-foot">Viva <em>Bella Vista</em></div>
+      <p>
+        Iniciativa independiente de propietarios y residentes
+        de Condominios Bella Vista, Real del Mar, Tijuana.
+      </p>
+    </div>
+    <div style="text-align:right; font-size:12px; opacity:.7;">
+      <div>vivabellavista.com</div>
+      <div style="margin-top:6px;">Convocatoria 2026</div>
+    </div>
+    <div class="legal">
+      Esta encuesta no representa al comitÃ© de vigilancia ni a la mesa directiva oficial. Es una iniciativa ciudadana de residentes.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===================================================================
+  // CONFIGURACIÃN: Reemplaza TU_FORM_ID con el ID que te dio Formspree
+  // Ejemplo: si tu endpoint es https://formspree.io/f/xanrlqkv
+  //          entonces FORM_ID = 'xanrlqkv'
+  // ===================================================================
+  const FORM_ID = 'mojygyql';
+  const FORMSPREE_URL = `https://formspree.io/f/${FORM_ID}`;
+
+  const form = document.getElementById('surveyForm');
+  const statusOK = document.getElementById('statusOK');
+  const statusERR = document.getElementById('statusERR');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    statusOK.style.display = 'none';
+    statusERR.style.display = 'none';
+
+    // ValidaciÃ³n nativa del navegador
+    if (!form.checkValidity()) {
+      statusERR.textContent = 'Por favor revisa los campos marcados con asterisco.';
+      statusERR.style.display = 'block';
+      form.reportValidity();
+      return;
+    }
+
+    // Deshabilitar botÃ³n mientras se envÃ­a
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        statusOK.style.display = 'block';
+        statusOK.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        form.reset();
+      } else {
+        const data = await response.json().catch(() => ({}));
+        statusERR.textContent = data.error || 'No se pudo enviar. Intenta de nuevo en unos segundos.';
+        statusERR.style.display = 'block';
+      }
+    } catch (err) {
+      statusERR.textContent = 'Error de conexiÃ³n. Verifica tu internet e intenta de nuevo.';
+      statusERR.style.display = 'block';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+
+  // Limitar prioridades a mÃ¡ximo 3 selecciones
+  const priChecks = document.querySelectorAll('input[name="prioridades"]');
+  priChecks.forEach(cb => {
+    cb.addEventListener('change', () => {
+      const checked = document.querySelectorAll('input[name="prioridades"]:checked');
+      if (checked.length > 3) {
+        cb.checked = false;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
