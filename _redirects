@@ -3,13 +3,30 @@
 
 # ── Unit subfolders — trailing-slash normalisation ──────────────────
 /c103   /c103/  301
-
+/encuesta   /encuesta/  301
 # ── Unit subfolders — serve each unit's index.html for all sub-paths ─
 /c103/*  /c103/:splat  200
-
+/encuesta/* /encuesta/:splat 200
 # ── Future units — add one block per unit ───────────────────────────
 # /c104   /c104/  301
 # /c104/*  /c104/:splat  200
 
 # ── www → apex redirect (handled by Cloudflare DNS, fallback below) ─
 # https://www.vivabellavista.com/*  https://vivabellavista.com/:splat  301
+# Cloudflare Pages — vivabellavista.com routing
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# — Unit subfolders — trailing-slash normalisation —————————————
+/c103   /c103/  301
+/encuesta   /encuesta/  301
+
+# — Unit subfolders — serve each unit's index.html for all sub-paths —
+/c103/* /c103/:splat 200
+/encuesta/* /encuesta/:splat 200
+
+# — Future units — add one block per unit ——————————————————
+# /c104   /c104/  301
+# /c104/* /c104/:splat 200
+
+# — www → apex redirect (handled by Cloudflare DNS, fallback below) —
+# https://www.vivabellavista.com/* https://vivabellavista.com/:splat 301
