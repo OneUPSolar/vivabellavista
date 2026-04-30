@@ -261,12 +261,7 @@
         submitted_at: new Date().toISOString()
       };
 
-      // -------------------------------------------------------
-      // FORMSPREE endpoint — replace YOUR_FORM_ID with the ID
-      // from formspree.io/forms after creating a free account.
-      // e.g. https://formspree.io/f/xqewldvr';
-      // -------------------------------------------------------
-      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xqewldvr';
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvzlpwab';
 
       try {
         const res = await fetch(FORMSPREE_ENDPOINT, {
